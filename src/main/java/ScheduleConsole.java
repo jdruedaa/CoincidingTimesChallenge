@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Schedule {
+public class ScheduleConsole {
 
     public static void main(String[] args) {
         ArrayList<ArrayList> namesAndAssistance = readData();
@@ -156,18 +156,21 @@ public class Schedule {
             }
             else
             {
-                int endMinute1 = hoursAndMinutes1.get(3);
-                int startMinute2 = hoursAndMinutes2.get(1);
-                if(endMinute1 < startMinute2)
+                if(startHour1 == endHour2 && endHour1 == startHour2)
                 {
-                    coincide = 1;
-                }
-                else
-                {
-                    int startMinute1 = hoursAndMinutes1.get(1);
-                    int endMinute2 = hoursAndMinutes2.get(3);
-                    if (endMinute2 < startMinute1) {
-                        coincide = -1;
+                    int endMinute1 = hoursAndMinutes1.get(3);
+                    int startMinute2 = hoursAndMinutes2.get(1);
+                    if(endMinute1 < startMinute2)
+                    {
+                        coincide = 1;
+                    }
+                    else
+                    {
+                        int startMinute1 = hoursAndMinutes1.get(1);
+                        int endMinute2 = hoursAndMinutes2.get(3);
+                        if (endMinute2 < startMinute1) {
+                            coincide = -1;
+                        }
                     }
                 }
             }
@@ -177,18 +180,18 @@ public class Schedule {
 
     public static void printCoincidedTimes(Map<String, Integer> coincidedTimes)
     {
-        String mapString = coincidedTimes.toString();
         StringBuilder formattedFinalAnswer = new StringBuilder();
-        Arrays.stream(mapString.substring(1, mapString.length() - 1).split(","))
-                .map(String::stripLeading)
-                .map(coincidedMembersTimes -> coincidedMembersTimes.replaceFirst("=",":"))
-                .forEach(formattedAnswer -> formattedFinalAnswer.append(formattedAnswer).append("\n"));
-        if(formattedFinalAnswer.isEmpty())
+        if(coincidedTimes.isEmpty())
         {
-           formattedFinalAnswer.append("No coinciding office times were found.");
+            formattedFinalAnswer.append("No coinciding office times were found.");
         }
         else
         {
+            String mapString = coincidedTimes.toString();
+            Arrays.stream(mapString.substring(1, mapString.length() - 1).split(","))
+                    .map(String::stripLeading)
+                    .map(coincidedMembersTimes -> coincidedMembersTimes.replaceFirst("=",":"))
+                    .forEach(formattedAnswer -> formattedFinalAnswer.append(formattedAnswer).append("\n"));
             int length = formattedFinalAnswer.length();
             formattedFinalAnswer.delete(length-1,length);
         }

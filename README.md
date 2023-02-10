@@ -12,4 +12,5 @@ Given that the challenge was presented in the same way as a programming marathon
 While there is what was mentioned in the Solution Overview, it could be added that given more time, the solution can be optimized by fully utilizing binary search to reduce the number of operations when comparing the time intervals to count the ones that overlap. Other possible ideas to consider could include building a graph or another data tructure such as a variant of a tree to optimize the data processing.
 
 ## Instructions
-To run the program you need to have Java 8 or higher installed and configured. Then use your preferred editor or IDE (console) to run the program, remember to add an extra line (press enter) when inputting the data to make sure that all the data is read and processed.
+### Testing with console 
+To run the program you need to have Java 8 or higher installed and configured. Then use your preferred editor or IDE (console) to run the class ScheduleConsole.java, proceed to copy a test case from Test Cases.txt into the console, rinse and repeat until all test cases are run. Important: Remember to add one or two extra lines (press enter) after inputting the data to make sure that all the data is read and processed.
