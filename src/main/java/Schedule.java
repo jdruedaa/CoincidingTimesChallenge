@@ -154,6 +154,23 @@ public class Schedule {
             {
                 coincide = -1;
             }
+            else
+            {
+                int endMinute1 = hoursAndMinutes1.get(3);
+                int startMinute2 = hoursAndMinutes2.get(1);
+                if(endMinute1 < startMinute2)
+                {
+                    coincide = 1;
+                }
+                else
+                {
+                    int startMinute1 = hoursAndMinutes1.get(1);
+                    int endMinute2 = hoursAndMinutes2.get(3);
+                    if (endMinute2 < startMinute1) {
+                        coincide = -1;
+                    }
+                }
+            }
         }
         return coincide;
     }
