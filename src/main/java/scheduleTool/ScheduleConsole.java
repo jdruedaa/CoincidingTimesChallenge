@@ -1,3 +1,5 @@
+package scheduleTool;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -134,12 +136,14 @@ public class ScheduleConsole {
                         .replaceFirst("-",":").split(":"))
                 .map(clockTime -> clockTime.contains(":") ? clockTime.replaceFirst(":","") : clockTime)
                 .map(String::trim)
-                .map(Integer::parseInt).toList();
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         List<Integer> hoursAndMinutes2 = Stream.of(time2.substring(2)
                         .replaceFirst("-",":").split(":"))
                 .map(clockTime -> clockTime.contains(":") ? clockTime.replaceFirst(":","") : clockTime)
                 .map(String::trim)
-                .map(Integer::parseInt).toList();
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
         int endHour1 = hoursAndMinutes1.get(2);
         int startHour2 = hoursAndMinutes2.get(0);
         if(endHour1 < startHour2)
@@ -189,7 +193,7 @@ public class ScheduleConsole {
         {
             String mapString = coincidedTimes.toString();
             Arrays.stream(mapString.substring(1, mapString.length() - 1).split(","))
-                    .map(String::stripLeading)
+                    .map(String::trim)
                     .map(coincidedMembersTimes -> coincidedMembersTimes.replaceFirst("=",":"))
                     .forEach(formattedAnswer -> formattedFinalAnswer.append(formattedAnswer).append("\n"));
             int length = formattedFinalAnswer.length();
